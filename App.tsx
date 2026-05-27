@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useMemo } from 'react';
 import { ChatEntry, SourceType, AppState, Settings, Theme, AIProvider, ViewMode, ItemType, Link } from './types';
 import { Sidebar } from './components/Sidebar';
@@ -37,3 +38,14 @@ declare global {
     };
   }
 }
+
+const DEFAULT_SETTINGS: Settings = {
+  theme: Theme.LIGHT,
+  aiProvider: AIProvider.GEMINI,
+  preferredModel: 'gemini-3-flash-preview',
+  customEndpoint: 'http://localhost:1234/v1/chat/completions',
+  relatedChatsLimit: 9,
+  availableModels: [],
+  userAvatar: undefined,
+  userName: ''
+};
