@@ -1,8 +1,0 @@
-import { GoogleGenAI, Type } from "@google/genai";
-import { Settings, AIProvider } from "../types";
-
-export interface ChatMetadata {
-  summary: string;
-  tags: string[];
-  suggestedTitle: string;
-}
