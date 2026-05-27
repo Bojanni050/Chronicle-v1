@@ -1,4 +1,3 @@
-
 export enum SourceType {
   CHATGPT = 'ChatGPT',
   CLAUDE = 'Claude',
@@ -38,9 +37,6 @@ export interface Link {
   createdAt: number;
 }
 
-/**
- * Een geëxtraheerd feit uit een chat (subject → predicate → object)
- */
 /**
  * Metadata tracking memory decay history
  */
@@ -105,7 +101,7 @@ export interface ChatEntry {
   updatedAt: number;
   fileName?: string;
   embedding?: number[]; 
-  assets?: string[]; // Base64 encoded image strings or URIs
+  assets?: string[]; // Base64 encoded images or URIs
   memory_type?: string;
   salience?: number; // nieuw — 0.0 tot 1.0
   recallCount?: number; // nieuw — hoe vaak opgeroepen
@@ -128,6 +124,10 @@ export interface Settings {
   userAvatar?: string;
   userName?: string;
   hasSeenDemo?: boolean;
+  hindsightEnabled?: boolean;
+  hindsightApiUrl?: string;
+  hindsightBankId?: string;
+  hindsightApiKey?: string;
 }
 
 export type ViewMode = 'dashboard' | 'archive' | 'mindmap' | 'search';
