@@ -1,4 +1,3 @@
-
 const { app, BrowserWindow, ipcMain, shell, dialog } = require('electron');
 const path = require('path');
 const fs = require('fs');
@@ -57,7 +56,7 @@ async function initDatabase() {
             createdAt BIGINT,
             updatedAt BIGINT,
             fileName TEXT,
-            embedding double precision[],
+            embedding vector(1536),
             assets JSONB DEFAULT '[]',
             memory_type TEXT,
             salience double precision
@@ -140,7 +139,7 @@ async function initDatabase() {
               JOIN pg_namespace n ON n.oid = c.relnamespace
               WHERE c.relname = 'idx_chats_embedding_ivfflat'
             ) THEN
-              EXECUTE 'CREATE INDEX idx_chats_embedding_ivfflat ON chats USING ivfflat ((embedding::vector) vector_cosine_ops)';
+              EXECUTE 'CREATE INDEX idx_chats_embedding_ivfflat ON chats USING hnsw (embedding vector_cosine_ops)';
             END IF;
           END $$;
         `);
